@@ -33,6 +33,11 @@ You should be able to access the following endpoints:
 - http://localhost:4646/ui/jobs (Nomad UI)
 - http://localhost:8500/ui/dev/services (Consul UI)
 
+
+![img](screenshots/nomad.png)
+![img](screenshots/consul.png)
+
+
 ### Accessing via CLI
 
 (Grab the binaries for [nomad](https://www.nomadproject.io/downloads) and [consul](https://www.consul.io/downloads))
