@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  nomad:
+    image: mr-karan/nomad:1.1.5
+    container_name: nomad
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./nomad.Dockerfile
+      args:
+        NOMAD_VERSION: 1.1.5
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+      - ./configs/nomad.hcl:/etc/nomad.d/nomad.hcl:ro
+      - /opt/nomad/data:/opt/nomad/data
+    privileged: true
+    network_mode: host
+    depends_on:
+      - consul
+
+  consul:
+    image: consul:1.10.3
+    container_name: consul
+    restart: always
+    environment:
+      IP_ADDR: eth0
+    volumes:
+      - /opt/consul/data:/opt/consul/data
+      - ./configs/consul.hcl:/etc/consul.d/consul.hcl:ro
+    network_mode: host
+    command: 'agent -config-dir=/etc/consul.d/'
