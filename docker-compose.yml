@@ -23,8 +23,6 @@ services:
     image: consul:1.10.3
     container_name: consul
     restart: always
-    environment:
-      IP_ADDR: eth0
     volumes:
       - /opt/consul/data:/opt/consul/data
       - ./configs/consul.hcl:/etc/consul.d/consul.hcl:ro
