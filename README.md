@@ -12,7 +12,7 @@
 
 **nomadev** is an attempt to simplify setting up a [Nomad](https://www.nomadproject.io/) + [Consul](https://www.consul.io/) agents intended for **local development workflows**.
 
-The setup is based on `docker-compose` and is configured to spawn a single `docker `container for each Nomad and Consul agent. Both agents are configured to run in `server` + `client` mode.
+The setup is based on `docker-compose` and is configured to spawn a single `docker` container for each Nomad and Consul agent. Both agents are configured to run in `server` + `client` modes.
 
 This simplifies the setup for local use. It's possible to add more containers for additional servers/clients if required.
 
@@ -88,9 +88,7 @@ Some important things to note:
 
 Nomad configures the destination of `artifact`, `template` etc relative to the task working directory. If you're using `template` stanza, Nomad passes the `/allocl/<id>/<task>/local/` path as a `bind` mount option to the Docker daemon. What this means is that unless this exact path is present on your host machine, the task will fail to run.
 
-The only way around is to mount `/opt/nomad/data` (or whatever path you choose inside `[nomad.hcl](configs/nomad.hcl)`)
-
-The data directory path inside container and outside on the host **should be exactly the same**.
+The only way around is to mount `/opt/nomad/data` (or whatever `NOMAD_DATA_DIR` you choose inside [nomad.hcl](./configs/nomad.hcl)) to your host. The data directory path inside container and outside on the host **should be exactly the same**.
 
 This can be verified by `docker inspect` on any container which is spawned by `nomad`.:
 

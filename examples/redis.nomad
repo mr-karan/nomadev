@@ -1,6 +1,6 @@
 job "redis" {
   datacenters = ["dev"]
-  type = "service"
+  type        = "service"
 
   group "redis" {
     count = 1
@@ -20,8 +20,8 @@ job "redis" {
     restart {
       attempts = 2
       interval = "30m"
-      delay = "15s"
-      mode = "fail"
+      delay    = "15s"
+      mode     = "fail"
     }
 
     ephemeral_disk {

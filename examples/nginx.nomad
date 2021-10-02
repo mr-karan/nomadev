@@ -1,6 +1,6 @@
 job "nginx" {
   datacenters = ["dev"]
-  type = "service"
+  type        = "service"
 
   group "nginx" {
     count = 1
@@ -20,14 +20,14 @@ job "nginx" {
     restart {
       attempts = 2
       interval = "30m"
-      delay = "15s"
-      mode = "fail"
+      delay    = "15s"
+      mode     = "fail"
     }
 
     task "nginx" {
       driver = "docker"
       template {
-        data = <<EOF
+        data        = <<EOF
 server {
     listen       8000;
     server_name  nomad.local;
@@ -38,7 +38,7 @@ server {
     }
 }
 EOF
-        change_mode   = "restart"
+        change_mode = "restart"
         destination = "local/proxy.conf"
       }
       config {

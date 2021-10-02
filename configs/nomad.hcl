@@ -9,13 +9,13 @@ server {
 }
 
 client {
-  enabled       = true
+  enabled = true
 }
 
 plugin "docker" {
   config {
     volumes {
-      enabled      = true
+      enabled = true
     }
     extra_labels = ["job_name", "job_id", "task_group_name", "task_name", "namespace", "node_name", "node_id"]
   }
@@ -28,11 +28,11 @@ plugin "raw_exec" {
 }
 
 telemetry {
-  collection_interval = "15s"
-  disable_hostname = true
-  prometheus_metrics = true
+  collection_interval        = "15s"
+  disable_hostname           = true
+  prometheus_metrics         = true
   publish_allocation_metrics = true
-  publish_node_metrics = true
+  publish_node_metrics       = true
 }
 
 consul {
