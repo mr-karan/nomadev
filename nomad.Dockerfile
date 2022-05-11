@@ -1,9 +1,9 @@
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 
 LABEL maintainer="Karan Sharma <https://github.com/mr-karan>"
 EXPOSE 4646 4647 4648 4648/udp
 
-ARG NOMAD_VERSION=1.1.5
+ARG NOMAD_VERSION=1.2.6
 
 # Create directories for data/config.
 RUN mkdir -p /opt/nomad/data && \
@@ -11,12 +11,12 @@ RUN mkdir -p /opt/nomad/data && \
 
 # Packages required for nomad.
 RUN apt-get update && apt-get install -y \
-  unzip \
-  curl \
-  iproute2 \
-  vim \
-  ca-certificates \
-  && rm -rf /var/lib/apt/lists/*
+    unzip \
+    curl \
+    iproute2 \
+    vim \
+    ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install Nomad
 WORKDIR /tmp

@@ -2,14 +2,14 @@ version: '3.7'
 
 services:
   nomad:
-    image: mr-karan/nomad:1.1.5
+    image: mr-karan/nomad:1.2.6
     container_name: nomad
     restart: always
     build:
       context: ./
       dockerfile: ./nomad.Dockerfile
       args:
-        NOMAD_VERSION: 1.1.5
+        NOMAD_VERSION: 1.2.6
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:rw
       - ./configs/nomad.hcl:/etc/nomad.d/nomad.hcl:ro
@@ -20,7 +20,7 @@ services:
       - consul
 
   consul:
-    image: consul:1.10.3
+    image: consul:1.12
     container_name: consul
     restart: always
     volumes:

@@ -1,5 +1,3 @@
-NOMAD_VERSION := 1.1.5
-
 .PHONY: build
 build:
 	docker-compose build
