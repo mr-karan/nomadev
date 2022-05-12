@@ -115,3 +115,8 @@ While this setup works fine for local development, it requires high privileges t
 Additionally, `docker` socket needs to be mounted if you want to use the [`docker` task driver](https://www.nomadproject.io/docs/drivers/docker).
 
 Goes without saying, do not use this in production.
+
+
+### Nomad and cgroups v2
+
+Nomad 1.3.0 supports system with `cgroups v2`. If your system _only_ supports v2 (i.e. you don't have a file `/sys/fs/cgroup/unified` in your machine), you must mount `sys/fs/cgroup:/sys/fs/cgroup:ro` to `docker-compose.yml`. This repository by default does it. If you're on a system with only cgroups v1, you can remove this from the `docker-compose.yml` file.

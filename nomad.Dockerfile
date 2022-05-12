@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 LABEL maintainer="Karan Sharma <https://github.com/mr-karan>"
 EXPOSE 4646 4647 4648 4648/udp
 
-ARG NOMAD_VERSION=1.2.6
+ARG NOMAD_VERSION=1.3.0
 
 # Create directories for data/config.
 RUN mkdir -p /opt/nomad/data && \
@@ -26,7 +26,7 @@ RUN curl -sSL https://releases.hashicorp.com/nomad/${NOMAD_VERSION}/nomad_${NOMA
 
 # Install CNI (https://www.nomadproject.io/docs/integrations/consul-connect)
 RUN curl -L -o cni-plugins.tgz \ 
-    "https://github.com/containernetworking/plugins/releases/download/v1.0.0/cni-plugins-linux-$( [ $(uname -m) = aarch64 ] && echo arm64 || echo amd64)"-v1.0.0.tgz && \
+    "https://github.com/containernetworking/plugins/releases/download/v1.1.1/cni-plugins-linux-$( [ $(uname -m) = aarch64 ] && echo arm64 || echo amd64)"-v1.1.1.tgz && \
     mkdir -p /opt/cni/bin && \
     tar -C /opt/cni/bin -xzf cni-plugins.tgz
 
